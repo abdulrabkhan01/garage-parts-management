@@ -37,7 +37,6 @@ public class OrderService {
                 System.out.println("No discount available for Supplier B");
             }
         }
-
         return orderRepository.save(order);
     }
 }

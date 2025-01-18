@@ -2,6 +2,7 @@ package com.ark.garagepartsmgt.order_service.service;
 
 import com.ark.garagepartsmgt.order_service.model.Order;
 import com.ark.garagepartsmgt.order_service.model.OrderRequest;
+import com.ark.garagepartsmgt.order_service.model.OrderStatus;
 import com.ark.garagepartsmgt.order_service.model.Supplier;
 import com.ark.garagepartsmgt.order_service.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class OrderService {
         order.setQuantity(orderRequest.getQuantity());
         order.setOrderDate(LocalDateTime.now());
         order.setSupplier(orderRequest.getSupplier()); // Set the supplier from the request
+        order.setStatus(OrderStatus.ORDER_CREATED.name());
 
         if (orderRequest.getSupplier() == Supplier.SUPPLIER_B) { // Use enum comparison
             LocalTime currentTime = LocalTime.now();

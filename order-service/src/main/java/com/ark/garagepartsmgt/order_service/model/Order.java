@@ -24,4 +24,5 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private Supplier supplier;
+    private String status;
 }

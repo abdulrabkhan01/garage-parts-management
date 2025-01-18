@@ -1,4 +1,4 @@
-package com.ark.garagepartsmgt.inventory_service.model;
+package com.ark.garagepartsmgt.order_service.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,9 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderRequest {
-
-    private long partId;
+    private Long partId;
     private long quantity;
     private Supplier supplier;
-
 }

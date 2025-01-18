@@ -26,7 +26,7 @@ public class InventoryCheckService {
         List<Part> partsBelowThreshold = partRepository.findByAvailableQtyLessThanThreshold();
         for (Part part : partsBelowThreshold) {
             // Create an order request with the part ID and minimum order quantity
-            OrderRequest orderRequest = new OrderRequest(part.getId(), part.getMinOrderQty());
+            OrderRequest orderRequest = new OrderRequest(part.getId(), part.getMinOrderQty(), part.getSupplier());
             orderServiceProxy.createOrder(orderRequest);
         }
     }

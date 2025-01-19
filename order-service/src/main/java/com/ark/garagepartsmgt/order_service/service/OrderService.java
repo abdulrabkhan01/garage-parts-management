@@ -1,5 +1,6 @@
 package com.ark.garagepartsmgt.order_service.service;
 
+import com.ark.garagepartsmgt.order_service.client.SupplierClient;
 import com.ark.garagepartsmgt.order_service.model.Order;
 import com.ark.garagepartsmgt.order_service.model.OrderRequest;
 import com.ark.garagepartsmgt.order_service.model.OrderStatus;
@@ -16,6 +17,8 @@ import java.time.LocalTime;
 public class OrderService {
 
     private final OrderRepository orderRepository;
+
+    private final SupplierClient supplierClient;
 
     public Order createOrder(OrderRequest orderRequest) {
         Order order = new Order();
@@ -37,6 +40,8 @@ public class OrderService {
                 System.out.println("No discount available for Supplier B");
             }
         }
-        return orderRepository.save(order);
+        Order createdOrder =  orderRepository.save(order);
+        supplierClient.placeOrder(createdOrder);
+        return createdOrder;
     }
 }
